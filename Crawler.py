@@ -93,11 +93,6 @@ class Crawler(object):
 if __name__ == "__main__":
     url = ""
     out_dir = ""
-
     c = Crawler(url, out_dir)
-    try:
-        c.run()
-    except KeyboardInterrupt:
-        pass
-    finally:
-        c.create_view()
+    c.run()
+    c.create_view()
