@@ -37,8 +37,8 @@ class Browser(object):
 
 
 if __name__ == "__main__":
-    url = "https://www.tottori-u.ac.jp/"
-    out_dir = "./test_out"
+    url = ""
+    out_dir = ""
     tls_on = False
     b = Browser(url, out_dir, tls_on)
     html = b.get()
