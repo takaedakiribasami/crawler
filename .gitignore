@@ -1,5 +1,3 @@
-.git
+/.git
 __pycache__/
-venv/*
-webdriver/*
-geckodriver.log
+/geckodriver.log

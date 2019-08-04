@@ -91,9 +91,8 @@ class Crawler(object):
 
 
 if __name__ == "__main__":
-    # url = "https://www.med.tottori-u.ac.jp/admission/campuslife/clubfolder/15900.html"
-    url = "https://www.med.tottori-u.ac.jp/admission/campuslife/clubfolder/15900.html"
-    out_dir = "./out_dir"
+    url = ""
+    out_dir = ""
 
     c = Crawler(url, out_dir)
     try:
