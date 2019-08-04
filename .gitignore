@@ -1,5 +1,5 @@
 .git
 __pycache__/
-venv/
-webdriver/
+venv/*
+webdriver/*
 geckodriver.log
