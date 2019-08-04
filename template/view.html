@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>URL Tree</title>
+  <style>
+    svg {
+      border-style: solid;
+      border-color: #555;
+      background-color: ghostwhite;
+    }
+
+    .node {
+      cursor: pointer;
+    }
+
+    .node circle {
+      fill: #fff;
+      stroke: gray;
+      stroke-width: 1.5px;
+    }
+
+    .link {
+      fill: none;
+      stroke: #555;
+      stroke-opacity: 0.6;
+      stroke-width: 1.5px;
+    }
+
+    #detail {
+      margin: 10px 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="detail">
+    <p>CURRENT (ID) : Not Selected</p>
+    <p>PARENT (ID) : Not Selected</p>
+  </div>
+  <div id="detail-data">
+  </div>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="./data.js"></script>
+  <script src="./view.js"></script>
+</body>
+
+</html>
