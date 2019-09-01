@@ -50,7 +50,7 @@ class Crawler(object):
             sleep(3)
             html = browser.get()
             links = self._get_links(html)
-            # sleep(30)
+            sleep(30)
         except WebDriverException:
             capture.kill()
             shutil.rmtree(sub_dir)
