@@ -12,6 +12,13 @@ $ cd crawler
 $ pipenv install
 ```
 
+```
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install wireshark
+$ sudo usermod -aG wireshark (your_user_name)
+```
+
 ## 使い方
 ```
 $ pipenv shell
