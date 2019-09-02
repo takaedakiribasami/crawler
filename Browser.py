@@ -14,8 +14,18 @@ class Browser(object):
         geckodriver = conf["DRIVER_PATH"]
         options = Options()
         options.headless = True
+
+        profile = webdriver.FirefoxProfile()
+        profile.set_preference("privacy.trackingprotection.annotate_channels", False)
+        profile.set_preference("privacy.trackingprotection.enabled", False)
+        profile.set_preference("privacy.trackingprotection.pbmode.enabled", False)
+        profile.set_preference("plugins.flashBlock.enabled", False)
+        profile.set_preference("browser.safebrowsing.blockedURIs.enabled", False)
+
         self.driver = webdriver.Firefox(
-            executable_path=geckodriver, firefox_options=options
+            executable_path=geckodriver,
+            firefox_options=options,
+            firefox_profile=profile,
         )
         self.driver.set_page_load_timeout(60)
         self.driver.set_script_timeout(30)
