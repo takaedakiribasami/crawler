@@ -1,8 +1,6 @@
 # crawler
 
 ## 動作環境
-- python 3.7
-- pip 19.2
 - pipenv 2018.11.26
 - Tshark 2.6
 
