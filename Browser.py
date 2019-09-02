@@ -33,6 +33,7 @@ class Browser(object):
     def get(self):
         print("- browser get")
         html = ""
+        self.driver.delete_all_cookies()
         try:
             self.driver.get(self.url)
             html = self.driver.page_source

@@ -2,7 +2,8 @@
 
 ## 動作環境
 - Ubuntu18.04LTS
-- pipenv 2018.11.26
+- Mozilla Firefox 68.0.2
+- pipenv, version 2018.11.26
 - Tshark 2.6
 
 ## 導入手順
