@@ -23,4 +23,5 @@ class Capture(object):
         self.proc = subprocess.Popen(self.cmd)
 
     def kill(self):
+        print("- capture close")
         self.proc.kill()

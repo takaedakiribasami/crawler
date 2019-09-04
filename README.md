@@ -1,4 +1,6 @@
 # crawler
+Firefoxで指定されたURLにアクセスし、通信データをキャプチャする．
+クローリングしながら通信データをキャプチャすることも可能．
 
 ## 動作環境
 - Ubuntu18.04LTS
@@ -8,8 +10,8 @@
 
 ## 導入手順
 ```
-$ git clone https://github.com/takaedakiribasami/crawler.git crawler
-$ cd crawler
+$ git clone https://github.com/takaedakiribasami/crawler.git (インストール先ディレクトリ)
+$ cd (インストール先ディレクトリ)
 $ pipenv install
 ```
 
@@ -17,11 +19,12 @@ $ pipenv install
 $ sudo apt update
 $ sudo apt upgrade
 $ sudo apt install wireshark
-$ sudo usermod -aG wireshark (your_user_name)
+$ sudo usermod -aG wireshark (実行ユーザー)
 ```
 
 ## 使い方
 ```
+$ cd (インストール先ディレクトリ)
 $ pipenv shell
-$ python main.py (URL) (output_directory)
+$ python main.py (URL) (出力先ディレクトリ)
 ```
