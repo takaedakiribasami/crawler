@@ -4,6 +4,7 @@ import json
 import os
 import shutil
 import re
+import traceback
 from time import sleep
 from collections import deque
 from selenium.common.exceptions import WebDriverException
@@ -52,15 +53,11 @@ class Crawler(object):
             links = self._get_links(html)
             sleep(30)
         except WebDriverException:
-            capture.kill()
-            shutil.rmtree(sub_dir)
+            self._create_exception_file(traceback.format_exc(), sub_dir)
         except KeyboardInterrupt:
-            print("*** IN _get ***")
-            self.create_view()
-        else:
-            capture.kill()
-            self._create_url_text(url, sub_dir)
+            self._create_exception_file(traceback.format_exc(), sub_dir)
         finally:
+            capture.kill()
             browser.close()
         return links
 
@@ -78,21 +75,13 @@ class Crawler(object):
             os.mkdir(new_dir)
         return new_dir
 
-    def _create_url_text(self, url, sub_dir):
-        url_file = self.conf["FILE_NAME"]["URL"]
-        with open(sub_dir + url_file, "w") as f:
-            f.write(url)
+    def _create_exception_file(self, log, sub_dir):
+        exception_file = self.conf["FILE_NAME"]["EXCEPTION"]
+        with open(sub_dir + exception_file, "w") as f:
+            f.write(log)
 
     def create_view(self):
         with open(self.out_dir + "data.js", "w") as f:
             f.write(self.root.create_data_js())
         shutil.copyfile("./template/view.js", self.out_dir + "view.js")
         shutil.copyfile("./template/view.html", self.out_dir + "view.html")
-
-
-if __name__ == "__main__":
-    url = ""
-    out_dir = ""
-    c = Crawler(url, out_dir)
-    c.run()
-    c.create_view()

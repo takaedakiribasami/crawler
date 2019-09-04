@@ -1,10 +1,11 @@
 {
-    "MAX_DEPTH": 0,
+    "MAX_DEPTH": 1,
     "INTERFACE": 1,
     "DRIVER_PATH": "./webdriver/geckodriver",
     "FILE_NAME": {
         "PCAP": "traffic.pcap",
-        "URL": "url.txt"
+        "URL": "url.txt",
+        "EXCEPTION": "exception.log"
     },
     "TLS": {
         "ENABLE": true,

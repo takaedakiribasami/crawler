@@ -1,5 +1,7 @@
 # codin: utf-8
 
+import os
+
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.firefox.options import Options
@@ -10,6 +12,8 @@ class Browser(object):
         self.url = url
         self.out_dir = out_dir
         self.tls_on = conf["TLS"]["ENABLE"]
+        self.tls_key = conf["TLS"]["KEY"]
+        self.url_file = conf["FILE_NAME"]["URL"]
 
         geckodriver = conf["DRIVER_PATH"]
         options = Options()
@@ -21,6 +25,8 @@ class Browser(object):
         profile.set_preference("privacy.trackingprotection.pbmode.enabled", False)
         profile.set_preference("plugins.flashBlock.enabled", False)
         profile.set_preference("browser.safebrowsing.blockedURIs.enabled", False)
+
+        os.environ["SSLKEYLOGFILE"] = self.out_dir + self.tls_key
 
         self.driver = webdriver.Firefox(
             executable_path=geckodriver,
@@ -42,16 +48,12 @@ class Browser(object):
             raise WebDriverException()
         return html
 
+    def _create_url_text(self):
+        with open(self.out_dir + self.url_file, "w") as f:
+            f.write(self.url)
+
     def close(self):
         print("- browser close")
         self.driver.close()
-
-
-if __name__ == "__main__":
-    url = ""
-    out_dir = ""
-    tls_on = False
-    b = Browser(url, out_dir, tls_on)
-    html = b.get()
-    print(html[:480])
-    b.close()
+        self._create_url_text()
+        del os.environ["SSLKEYLOGFILE"]

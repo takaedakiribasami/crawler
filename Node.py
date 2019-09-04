@@ -36,22 +36,3 @@ class Node(object):
     def create_data_js(self):
         return "const data = " + self._format_json_info() + ";"
         # return self._format_json_info()
-
-
-if __name__ == "__main__":
-    n1 = Node("n1")
-    n2 = Node("n2")
-    n3 = Node("n3")
-    n4 = Node("n4")
-    n5 = Node("n5")
-    n6 = Node("n6")
-    n7 = Node("n7")
-    n8 = Node("n8")
-
-    n1.add_children([n2, n3, n4])
-    n2.add_children([n5, n6])
-    n3.add_children([n7])
-    n7.add_children([n8])
-
-    print(n1.create_json())
-2
