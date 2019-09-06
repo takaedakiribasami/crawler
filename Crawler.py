@@ -15,14 +15,14 @@ from Node import Node
 
 
 class Crawler(object):
-    def __init__(self, url, out_dir):
+    def __init__(self, url, out_dir, max_depth):
         with open("./conf.json", "r") as f:
             self.conf = json.load(f)
         self.out_dir = out_dir if out_dir[-1] == "/" else (out_dir + "/")
         self.root = Node(url)
+        self.max_depth = max_depth
 
     def run(self):
-        max_depth = self.conf["MAX_DEPTH"]
         que = deque([self.root])
         used = []
         while len(que) > 0:
@@ -36,7 +36,7 @@ class Crawler(object):
             links = self._get(url, self._create_dir(sub_dir_id))
             links = self._deduplicate(links, used)
             used.extend(links)
-            if depth == max_depth:
+            if depth == self.max_depth:
                 continue
             nodes = [Node(link) for link in links]
             node.add_children(nodes)

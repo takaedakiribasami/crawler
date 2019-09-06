@@ -1,5 +1,4 @@
 {
-    "MAX_DEPTH": 1,
     "INTERFACE": 1,
     "DRIVER_PATH": "./webdriver/geckodriver",
     "FILE_NAME": {
